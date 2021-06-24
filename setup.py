@@ -49,6 +49,5 @@ setup(
     tests_require=test_requirements,
     url='https://github.com/kristianbonnici/mlvizlib',
     version=mlvizlib_version,
-    zip_safe=False,
-    entry_points={"console_scripts": ["mlvizlib = mlvizlib.main:main"]}
+    zip_safe=False
 )
