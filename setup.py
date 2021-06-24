@@ -3,7 +3,15 @@
 """The setup script."""
 
 from setuptools import setup, find_packages
+import subprocess
+import os
 
+cf_remote_version = subprocess.run(['git', 'describe', '--tags'], stdout=subprocess.PIPE).stdout.decode("utf-8").strip()
+assert "." in cf_remote_version
+
+assert os.path.isfile("cf_remote/version.py")
+with open("cf_remote/VERSION", "w", encoding="utf-8") as fh:
+    fh.write(f"{cf_remote_version}\n")
 with open('README.rst') as readme_file:
     readme = readme_file.read()
 
@@ -32,6 +40,7 @@ setup(
     install_requires=requirements,
     license="MIT license",
     long_description=readme + '\n\n' + history,
+    package_data={"cf_remote": ["VERSION"]},
     include_package_data=True,
     keywords='mlvizlib',
     name='mlvizlib',
