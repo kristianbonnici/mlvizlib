@@ -26,7 +26,7 @@ MLVizLib is a powerful package for generating quick, insightful, and stylish vis
 Features
 --------
 
-* TODO
+* TODO.
 
 Credits
 -------
