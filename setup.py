@@ -10,7 +10,7 @@ cf_remote_version = subprocess.run(['git', 'describe', '--tags'], stdout=subproc
 assert "." in cf_remote_version
 
 assert os.path.isfile("cf_remote/version.py")
-with open("cf_remote/VERSION", "w", encoding="utf-8") as fh:
+with open("mlvizlib/VERSION", "w", encoding="utf-8") as fh:
     fh.write(f"{cf_remote_version}\n")
 with open('README.rst') as readme_file:
     readme = readme_file.read()
