@@ -9,7 +9,7 @@ import os
 mlvizlib_version = subprocess.run(['git', 'describe', '--tags'], stdout=subprocess.PIPE).stdout.decode("utf-8").strip()
 assert "." in mlvizlib_version
 
-assert os.path.isfile("mlvizlib/version.py")
+# assert os.path.isfile("mlvizlib/version.py")
 with open("mlvizlib/VERSION", "w", encoding="utf-8") as fh:
     fh.write(f"{mlvizlib_version}\n")
 with open('README.rst') as readme_file:
