@@ -3,15 +3,7 @@
 """The setup script."""
 
 from setuptools import setup, find_packages
-import subprocess
-import os
 
-mlvizlib_version = subprocess.run(['git', 'describe', '--tags'], stdout=subprocess.PIPE).stdout.decode("utf-8").strip()
-assert "." in mlvizlib_version
-
-# assert os.path.isfile("mlvizlib/version.py")
-with open("mlvizlib/VERSION", "w", encoding="utf-8") as fh:
-    fh.write(f"{mlvizlib_version}\n")
 with open('README.rst') as readme_file:
     readme = readme_file.read()
 
@@ -40,7 +32,6 @@ setup(
     install_requires=requirements,
     license="MIT license",
     long_description=readme + '\n\n' + history,
-    package_data={"mlvizlib": ["VERSION"]},
     include_package_data=True,
     keywords='mlvizlib',
     name='mlvizlib',
@@ -48,6 +39,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/kristianbonnici/mlvizlib',
-    version=mlvizlib_version,
+    version="0.0.2",
     zip_safe=False
 )
