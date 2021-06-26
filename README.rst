@@ -16,8 +16,7 @@ mlvizlib
 
 
 
-MLVizLib is a powerful package for generating quick, insightful, and stylish visualizations for machine learning.
-
+MLVizLib is a powerful package for generating quick, insightful, and stylish visualizations for machine learning (ML). The main goal is to enhance the ML workflow by providing insightful ML visualizations with minimum effort.
 
 * Free software: MIT license
 * Documentation: https://mlvizlib.readthedocs.io.
