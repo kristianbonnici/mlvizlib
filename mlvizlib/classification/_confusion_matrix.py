@@ -7,7 +7,7 @@ Confusion Matrix visualization.
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-from mlvizlib.utils.input_validation import check_consistent_length
+from mlvizlib.utils._input_validation import check_consistent_length
 
 
 class ConfusionMatrixViz:
@@ -70,6 +70,16 @@ def confusion_matrix(
     y_pred,
     *,
     normalize=False
+):
+    cm_object = ConfusionMatrixViz(y_true, y_pred, normalized=normalize)
+    return cm_object.plot()
+
+
+def confusion_matrix_kalastaja(
+    y_true,
+    y_pred,
+    *,
+    normalize=True
 ):
     cm_object = ConfusionMatrixViz(y_true, y_pred, normalized=normalize)
     return cm_object.plot()
