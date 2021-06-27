@@ -50,8 +50,5 @@ confusion_matrix(eg_y_true, eg_y_pred)
 plt.show()
 ```
 <p align="center">
-  <img src="img/example-cm-viz.jpg" width="800" />
+  <img src="https://github.com/kristianbonnici/mlvizlib/blob/master/img/example-cm-viz.jpg?raw=true" width="800" />
 </p>
-
-
-
