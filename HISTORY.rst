@@ -2,12 +2,13 @@
 History
 =======
 
-0.0.2 (2021-06-24)
+0.1.0 (2021-06-27)
 ------------------
 
-* Project connected to GitHub.
+* Confusion Matrix Visualization.
 
-0.0.1 (2021-06-24)
+0.0.X
 ------------------
 
 * First release on PyPI.
+* Project connected to GitHub.
