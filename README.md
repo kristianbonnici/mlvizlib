@@ -12,9 +12,9 @@ providing insightful visualizations with minimum effort.
 
 -   Documentation: (COMING SOON) <https://mlvizlib.readthedocs.io>.
 
-<div class="alert alert-block alert-danger">
-<b>NOTE:</b> This project is in early stage development, and can thus go trough major changes.
-</div>
+> **NOTE**
+>
+> This project is in early stage development, and can thus go trough major changes.
 
 Install
 -------
