@@ -12,5 +12,5 @@ The :mod:`mlvizlib.classification` module implements a variety of classification
 #    "confusion_matrix"
 #    ]
 
-# import the modules (.py) into the subpackages
-from . import viz_confusion_matrix
+# import relevant function (for package users) from the modules (.py) into the subpackages
+from .viz_confusion_matrix import confusion_matrix
