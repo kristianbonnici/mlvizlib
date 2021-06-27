@@ -49,9 +49,9 @@ eg_y_pred = [2,0,0,0,2,0,1,2,1,0,2,2,1,1,0,2,1,0,1,0,0,1,2]
 confusion_matrix(eg_y_true, eg_y_pred)
 plt.show()
 ```
-
 <p align="center">
-  <img src="example-cm-viz.jpg" width="800" />
+  <img src="img/example-cm-viz.jpg" width="800" />
 </p>
+
 
 
