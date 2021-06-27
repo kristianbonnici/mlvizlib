@@ -3,6 +3,7 @@ include CONTRIBUTING.rst
 include HISTORY.rst
 include LICENSE
 include README.rst
+include example-cm-viz.jpg
 
 recursive-include tests *
 recursive-exclude * __pycache__

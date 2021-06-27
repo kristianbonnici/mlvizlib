@@ -51,7 +51,7 @@ plt.show()
 ```
 
 <p align="center">
-  <img src="img/example-cm-viz.jpg" width="800" />
+  <img src="example-cm-viz.jpg" width="800" />
 </p>
 
 
