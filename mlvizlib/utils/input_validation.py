@@ -17,9 +17,6 @@ def check_consistent_length(*lists):
     lengths = [len(l) for l in lists]  # noqa: E741
     unique_lengths = np.unique(lengths)
 
-    print(unique_lengths)
-    print("pit", len(unique_lengths))
-
     if len(unique_lengths) != 1:
         raise ValueError(
             "Found input variables with inconsistent numbers of"
