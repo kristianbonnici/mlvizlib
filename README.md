@@ -42,10 +42,16 @@ Confusion Matrix Visualization example
 import matplotlib.pyplot as plt
 from mlvizlib.classification import confusion_matrix
 
-eg_y_true = [1,0,0,0,1,1,0,0,0,1,1,0]  # example y_true values
-eg_y_pred = [0,0,0,0,1,1,1,0,0,0,1,0]  # example y_pred values
+# example data
+eg_y_true = [2,0,1,0,2,0,1,2,0,0,2,0,1,1,0,1,1,0,0,0,0,2,2]
+eg_y_pred = [2,0,0,0,2,0,1,2,1,0,2,2,1,1,0,2,1,0,1,0,0,1,2]
 
 confusion_matrix(eg_y_true, eg_y_pred)
 plt.show()
 ```
+
+<p align="center">
+  <img src="img/example-cm-viz.jpg" width="800" />
+</p>
+
 
