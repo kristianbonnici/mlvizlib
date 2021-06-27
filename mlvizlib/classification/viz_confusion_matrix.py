@@ -7,7 +7,7 @@ Confusion Matrix visualization.
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-from mlvizlib.utils._input_validation import check_consistent_length
+from ..utils.input_validation import check_consistent_length
 
 
 class ConfusionMatrixViz:
