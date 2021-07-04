@@ -8,10 +8,16 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 from ..utils.input_validation import check_consistent_length
+from ..utils.input_validation import check_array_type_support
+from ..utils.input_transformation import numpy_to_list
+from ..utils.input_transformation import pandas_to_list
 
 
 class ConfusionMatrixViz:
-    """Class for confusion matrix visualization."""
+    """Class for confusion matrix visualization.
+
+    It is recommended to use confusion_matrix to create a ConfusionMatrixViz object.
+    """
 
     def __init__(self, y_true, y_pred, normalized=False, cmap='YlGn'):
         self.y_true = y_true
@@ -95,10 +101,12 @@ def confusion_matrix(
 
     Parameters
     ----------
-    y_true : list
+    y_true : array-like list, numpy.ndarray, pandas.core.frame.DataFrame, or pandas.core.series.Series of shape
+             (n_samples,) or (n_samples,1)
         True values.
 
-    y_pred : list
+    y_pred : array-like list, numpy.ndarray, pandas.core.frame.DataFrame, or pandas.core.series.Series of shape
+             (n_samples,) or (n_samples,1)
         Predicted values.
 
     base_norm_both : {'base', 'norm', 'both'}, default='both'
@@ -127,6 +135,30 @@ def confusion_matrix(
     >> confusion_matrix(eg_y_true, eg_y_pred)
     >> plt.show()
     """
+    check_array_type_support(y_true)
+    check_array_type_support(y_pred)
+
+    # convert y_true to list
+    if isinstance(y_true, type(np.array([]))):
+        y_true = numpy_to_list(y_true)
+    elif isinstance(y_true, type(pd.DataFrame())) or isinstance(y_true, type(pd.Series(dtype=float))):
+        y_true = pandas_to_list(y_true)
+    elif isinstance(y_true, type(())):
+        y_true = list(y_true)
+    else:
+        pass
+
+    # convert y_pred to list
+    if isinstance(y_pred, type(np.array([]))):
+        y_pred = numpy_to_list(y_pred)
+    elif isinstance(y_pred, type(pd.DataFrame())) or isinstance(y_pred, type(pd.Series(dtype=float))):
+        y_pred = pandas_to_list(y_pred)
+    elif isinstance(y_pred, type(())):
+        y_pred = list(y_pred)
+    else:
+        pass
+
+    # display setup
     if base_norm_both == 'both':
         plt.figure(figsize=figsize)
         plt.subplot(121)
