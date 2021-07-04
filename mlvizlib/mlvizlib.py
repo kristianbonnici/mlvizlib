@@ -1,3 +1,1 @@
 """Main module."""
-
-print("test")

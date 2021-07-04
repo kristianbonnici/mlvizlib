@@ -10,7 +10,8 @@ with open('README.md') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = [ ]
+with open('requirements.txt') as requirements_file:
+    requirements = requirements_file.read()
 
 test_requirements = ['pytest>=3', ]
 
@@ -28,7 +29,8 @@ setup(
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
     ],
-    description="MLVizLib is a powerful package for generating quick, insightful, and stylish visualizations for machine learning.",
+    description="MLVizLib is a powerful package for generating quick, insightful, and stylish visualizations for "
+                "machine learning.",
     install_requires=requirements,
     license="MIT license",
     long_description_content_type='text/markdown',
