@@ -19,7 +19,7 @@ class ConfusionMatrixViz:
     It is recommended to use confusion_matrix to create a ConfusionMatrixViz object.
     """
 
-    def __init__(self, y_true, y_pred, normalized=False, cmap='YlGn'):
+    def __init__(self, y_true, y_pred, normalized=False, cmap='RdPu', colorbar=True):
         self.y_true = y_true
         self.y_pred = y_pred
         self.normalized = normalized
@@ -29,6 +29,7 @@ class ConfusionMatrixViz:
             self.cm = self.construct()
             self.cm = self.normalize()
         self.cmap = cmap
+        self.colorbar = colorbar
 
     def construct(self):
         """ """
@@ -48,6 +49,8 @@ class ConfusionMatrixViz:
     def plot(self,
              *,
              labels=None,
+             labels_fontsize=12,
+             xticks_rotation='horizontal',
              ):
         """
 
@@ -57,6 +60,12 @@ class ConfusionMatrixViz:
 
         labels :
              (Default value = None)
+
+        labels_fontsize :
+             (Default value = 12)
+
+        xticks_rotation :
+             (Default value = 'horizontal')
 
         Returns
         -------
@@ -69,13 +78,13 @@ class ConfusionMatrixViz:
         else:
             plt.title('Normalized confusion matrix')
             fmt = '.2f'
-        plt.xlabel('Predicted label')
-        plt.ylabel('True label')
+        plt.xlabel('Predicted label', fontsize=labels_fontsize)
+        plt.ylabel('True label', fontsize=labels_fontsize)
         if labels is None:
             labels = list(np.unique(list(self.y_true) + list(self.y_pred)))
         tick_marks = np.arange(len(labels))
-        plt.xticks(tick_marks, labels)
-        plt.yticks(tick_marks, labels)
+        plt.xticks(tick_marks, labels, fontsize=labels_fontsize, rotation=xticks_rotation)
+        plt.yticks(tick_marks, labels, fontsize=labels_fontsize)
 
         # Loop over data dimensions and create text annotations.
         thresh = self.cm.max() / 2.
@@ -84,8 +93,9 @@ class ConfusionMatrixViz:
                 plt.text(j, i, format(self.cm[i, j], fmt), ha="center", va="center",
                          color="white" if self.cm[i, j] > thresh else "black")
 
+        if self.colorbar is True:
+            plt.colorbar(fraction=0.046, pad=0.04)
         plt.tight_layout()
-        plt.colorbar()
         return plt
 
 
@@ -94,8 +104,12 @@ def confusion_matrix(
     y_pred,
     *,
     base_norm_both='both',
-    cmap='YlGn',
-    figsize=(13, 6)
+    labels=None,
+    labels_fontsize=12,
+    xticks_rotation='horizontal',
+    cmap='RdPu',
+    figsize=(10, 5),
+    colorbar=True
 ):
     """Plot Confusion Matrix.
 
@@ -109,6 +123,16 @@ def confusion_matrix(
              (n_samples,) or (n_samples,1)
         Predicted values.
 
+    labels : list of shape (n_classes,), default=None
+        Label names used for plotting.
+
+    labels_fontsize : float or {'xx-small', 'x-small', 'small', 'medium', 'large', 'x-large', 'xx-large'}, default=12
+        Fontsize for the labels. If float, the fontsize in points. The string values denote sizes relative to the
+        default font size.
+
+    xticks_rotation : {'vertical', 'horizontal'} or float, default='horizontal'
+        Rotation of xticks labels in degrees.
+
     base_norm_both : {'base', 'norm', 'both'}, default='both'
         - if `'base'`, the displayed confusion matrix is not normalized;
         - if `'norm'`, the displayed confusion matrix is normalized over the true conditions;
@@ -117,8 +141,11 @@ def confusion_matrix(
     cmap : str or matplotlib Colormap, default='YlGn'
         Colormap recognized by matplotlib.
 
-    figsize : (float, float), default=(13, 6)
+    figsize : (float, float), default=(10, 5)
         Width, height in inches.
+
+    colorbar : bool, default=True
+        Includes colorbar on the side of the confusion matrix.
 
     Returns
     -------
@@ -162,16 +189,22 @@ def confusion_matrix(
     if base_norm_both == 'both':
         plt.figure(figsize=figsize)
         plt.subplot(121)
-        ConfusionMatrixViz(y_true, y_pred, normalized=False, cmap=cmap).plot()
+        ConfusionMatrixViz(y_true, y_pred, normalized=False,
+                           cmap=cmap, colorbar=colorbar).plot(labels=labels,
+                                                              xticks_rotation=xticks_rotation,
+                                                              labels_fontsize=labels_fontsize)
         plt.subplot(122)
-        ConfusionMatrixViz(y_true, y_pred, normalized=True, cmap=cmap).plot()
+        ConfusionMatrixViz(y_true, y_pred, normalized=True,
+                           cmap=cmap, colorbar=colorbar).plot(labels=labels,
+                                                              xticks_rotation=xticks_rotation,
+                                                              labels_fontsize=labels_fontsize)
         plt.tight_layout()
         return plt
     elif base_norm_both == 'base':
-        cm_object = ConfusionMatrixViz(y_true, y_pred, normalized=False, cmap=cmap)
+        cm_object = ConfusionMatrixViz(y_true, y_pred, normalized=False, cmap=cmap, colorbar=colorbar)
         plt.figure(figsize=figsize)
-        return cm_object.plot()
+        return cm_object.plot(labels=labels, xticks_rotation=xticks_rotation, labels_fontsize=labels_fontsize)
     elif base_norm_both == 'norm':
-        cm_object = ConfusionMatrixViz(y_true, y_pred, normalized=True, cmap=cmap)
+        cm_object = ConfusionMatrixViz(y_true, y_pred, normalized=True, cmap=cmap, colorbar=colorbar)
         plt.figure(figsize=figsize)
-        return cm_object.plot()
+        return cm_object.plot(labels=labels, xticks_rotation=xticks_rotation, labels_fontsize=labels_fontsize)
