@@ -1,5 +1,4 @@
 pytest
-matplotlib
 setuptools
 numpy
 pandas
