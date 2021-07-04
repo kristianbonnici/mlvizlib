@@ -4,6 +4,7 @@
 
 ![PyPI Version](https://img.shields.io/pypi/v/mlvizlib)
 ![License](https://img.shields.io/pypi/l/mlvizlib)
+[![codecov](https://codecov.io/gh/kristianbonnici/mlvizlib/branch/master/graph/badge.svg?token=UUGYAZMOZU)](https://codecov.io/gh/kristianbonnici/mlvizlib)
 
 **MLVizLib (Machine Learning Visualization Library)** is a powerful
 library for generating quick, insightful, and stylish visualizations for
