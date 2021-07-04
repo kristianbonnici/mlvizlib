@@ -1,5 +1,7 @@
 from mlvizlib.classification.viz_confusion_matrix import ConfusionMatrixViz
 import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
 
 
 def test_confusionmatrixviz():
