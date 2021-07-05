@@ -2,6 +2,13 @@
 History
 =======
 
+0.1.3 (2021-07-05)
+------------------
+
+* New features for Confusion Matrix Visualization.
+* Tests included.
+* Test coverage included.
+
 0.1.0 (2021-06-27)
 ------------------
 
