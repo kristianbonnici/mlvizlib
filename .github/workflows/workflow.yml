@@ -20,6 +20,7 @@ jobs:
         pip install matplotlib
         pip install pandas
         pip install numpy
+        pip install coverage
         pip install pytest
         pip install pytest-cov
         pytest --cov=./ --cov-report=xml
